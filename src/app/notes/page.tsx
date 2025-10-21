@@ -467,31 +467,31 @@ const NotesPage = () => {
         </p>
 
         {/* Notes Grid */}
-        <div className='mt-12 sm:mt-16 space-y-4 sm:space-y-6 max-w-6xl mx-auto px-0 sm:px-4 md:px-38'>
-          {notesData.notes.map((note: Note, index) => ( // Fixed: Changed 'any' to 'Note' type
-            <div 
-              key={note.id}
-              ref={(el) => { notesRef.current[index] = el; }}
-              className='bg-white/40 rounded-xl sm:rounded-2xl p-6 sm:p-8 md:p-10 hover:bg-white/60 transition-all duration-300 cursor-pointer'
-              onClick={() => setSelectedNote(note)}
-            >
-              <div className='flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 sm:gap-6 md:gap-8'>
-                {/* Text Content */}
-                <div className='flex-1 order-2 sm:order-1'>
-                  <h3 className='text-[#025A4E] text-lg sm:text-xl font-matter font-semibold mb-2'>{note.title}</h3>
-                  <p className='text-[#6B7280] text-sm sm:text-base'>
-                    {note.description}
-                  </p>
-                </div>
-                
-                {/* Icon Circle */}
-                <div className={`w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 ${note.iconBg} rounded-full flex items-center justify-center flex-shrink-0 order-1 sm:order-2 self-end sm:self-auto`}>
-                  {renderIcon(note.iconType)}
+          <div className='mt-12 sm:mt-16 space-y-4 sm:space-y-6 max-w-6xl mx-auto px-0 sm:px-4 md:px-38'>
+            {notesData.notes.map((note: Note, index) => (
+              <div 
+                key={note.id}
+                ref={(el) => { notesRef.current[index] = el; }}
+                className='bg-white/40 rounded-xl sm:rounded-2xl p-6 sm:p-8 md:p-10 hover:bg-white/60 transition-all duration-300 cursor-pointer'
+                onClick={() => setSelectedNote(note)}
+              >
+                <div className='flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 sm:gap-6 md:gap-8'>
+                  {/* Text Content */}
+                  <div className='flex-1 order-2 sm:order-1'>
+                    <h3 className='text-[#025A4E] text-lg sm:text-xl font-matter font-semibold mb-2'>{note.title}</h3>
+                    <p className='text-[#6B7280] text-sm sm:text-base'>
+                      {note.description}
+                    </p>
+                  </div>
+                  
+                  {/* Icon Circle - Hidden on mobile, visible on sm and above */}
+                  <div className={`hidden sm:flex w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 ${note.iconBg} rounded-full items-center justify-center flex-shrink-0 order-1 sm:order-2 self-end sm:self-auto`}>
+                    {renderIcon(note.iconType)}
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
       </div>
       <Footer />
     </div>

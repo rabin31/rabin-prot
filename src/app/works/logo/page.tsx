@@ -4,7 +4,7 @@ import Navbar from '@/components/Navbar'
 import React, { useEffect, useRef } from 'react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import Image from 'next/image' // Import Next.js Image component
+import Image from 'next/image'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -154,22 +154,27 @@ const Page = () => {
               className=''
             >
               <div className='px-2 sm:px-4'>
-                <div className='logo-img h-[50vh] sm:h-[60vh] md:h-[80vh] lg:h-screen w-full rounded-2xl overflow-hidden'>
+                <div className='logo-img h-[40vh] sm:h-[50vh] md:h-[60vh] lg:h-[70vh] xl:h-[80vh] w-full rounded-2xl overflow-hidden'>
                   <Image 
                     src={logo.img} 
                     alt={logo.title} 
                     width={1200} 
                     height={800}
                     className='object-cover h-full w-full'
+                    priority={index === 0} // First image loads with priority
+                    loading={index === 0 ? 'eager' : 'lazy'} // First image eager, others lazy
+                    placeholder='blur'
+                    blurDataURL='data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=='
+                    sizes='(max-width: 640px) 100vw, (max-width: 768px) 90vw, (max-width: 1024px) 80vw, 1200px'
                   />
                 </div>
               </div>
 
-              <div className='logo-content h-auto pl-4 sm:pl-12 md:pl-16 lg:pl-24 xl:pl-92 flex flex-col items-start space-y-3 sm:space-y-4 py-12 sm:py-14 md:py-16'>
-                <h1 className='text-[#025A4E] font-acorn font-semibold text-2xl sm:text-3xl text-left'>
+              <div className='logo-content h-auto pl-4 sm:pl-12 md:pl-16 lg:pl-24 xl:pl-92 flex flex-col items-start space-y-3 sm:space-y-4 py-8 sm:py-10 md:py-12'>
+                <h1 className='text-[#025A4E] font-acorn font-semibold text-xl sm:text-2xl md:text-3xl text-left'>
                   {logo.title}
                 </h1>
-                <p className='font-matter font-medium text-base sm:text-lg text-[#4F6965] max-w-full sm:max-w-md md:max-w-lg pr-4 sm:pr-0'>
+                <p className='font-matter font-medium text-sm sm:text-base md:text-lg text-[#4F6965] max-w-full sm:max-w-md md:max-w-lg pr-4 sm:pr-0'>
                   {logo.description}
                 </p>
               </div>

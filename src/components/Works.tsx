@@ -2,6 +2,7 @@
 import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import Link from 'next/link';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -94,7 +95,7 @@ const Works = () => {
   return (
     <div ref={containerRef} className='relative w-full min-h-screen flex flex-col items-center justify-center'>
        <div ref={row1Ref} className='h-screen w-full flex flex-col md:flex-row items-center justify-center px-4 sm:px-6 md:px-8 py-8 md:py-18 gap-6 md:gap-12'>
-          <a href='/works/logo' ref={card1Ref} className='h-[45vh] md:h-full relative w-full md:w-[35%] bg-[#D592EC] rounded-3xl md:rounded-[3rem] group overflow-hidden'>
+          <Link href='/works/logo' ref={card1Ref} className='h-[45vh] md:h-full relative w-full md:w-[35%] bg-[#D592EC] rounded-3xl md:rounded-[3rem] group overflow-hidden'>
             <div className='right-6 md:right-10 top-6 md:top-10 absolute flex flex-col text-right gap-1'>
                <p className='uppercase text-xs md:text-sm font-matter text-[#344542] tracking-[0.15rem] md:tracking-[0.2rem]'>I CAN DESIGN</p>
                <h1 className='font-acorn text-2xl md:text-3xl lg:text-4xl font-semibold text-[#344542]'>Logos</h1>
@@ -102,21 +103,21 @@ const Works = () => {
                   <img src="./logo.png" alt="" className='object-cover group-hover:scale-105 transform transition-transform duration-300' />
                </div>
             </div>
-          </a>
+          </Link>
 
-          <a href="/works/web" ref={card2Ref} className='h-[45vh] md:h-full relative w-full md:w-[65%] bg-[#9ADFD5] rounded-3xl md:rounded-[3rem] group overflow-hidden'>
+          <Link href="/works/web" ref={card2Ref} className='h-[45vh] md:h-full relative w-full md:w-[65%] bg-[#9ADFD5] rounded-3xl md:rounded-[3rem] group overflow-hidden'>
           <div className='right-6 md:right-10 top-6 md:top-10 absolute flex flex-col text-right gap-1'>
                <p className='uppercase text-xs md:text-sm font-matter text-[#344542] tracking-[0.15rem] md:tracking-[0.2rem]'>I CAN DEVELOP</p>
                <h1 className='font-acorn text-2xl md:text-3xl lg:text-4xl font-semibold text-[#344542]'>Websites</h1>
-               <div className=''>
+               <div className='overflow-hidden'>
                   <img src="./web.png" alt="" className='object-cover ml-3 md:ml-5 mt-2 md:mt-4 rounded-xl md:rounded-2xl group-hover:scale-105 transform transition-transform duration-300' />
                </div>
          </div>
-          </a>
+          </Link>
        </div>
 
        <div ref={row2Ref} className='h-screen w-full flex flex-col md:flex-row items-center justify-center px-4 sm:px-6 md:px-8 py-8 md:py-18 gap-6 md:gap-12'>
-          <a href="/works/social" ref={card3Ref} className='h-[45vh] md:h-full relative w-full md:w-[65%] bg-[#F0B695] rounded-3xl md:rounded-[3rem] group'>
+          <Link href="/works/social" ref={card3Ref} className='h-[45vh] md:h-full relative w-full md:w-[65%] bg-[#F0B695] rounded-3xl md:rounded-[3rem] group'>
           <div className='right-6 md:right-10 top-6 md:top-10 absolute flex flex-col text-right gap-1'>
                <p className='uppercase text-xs md:text-sm font-matter text-[#344542] tracking-[0.15rem] md:tracking-[0.2rem]'>I CAN DESIGN</p>
                <h1 className='font-acorn text-2xl md:text-3xl lg:text-4xl font-semibold text-[#344542]'>Ads</h1>
@@ -124,7 +125,7 @@ const Works = () => {
                   <img src="./social.png" alt="" className='object-cover group-hover:scale-105 transform transition-transform duration-300' />
                </div>
          </div>
-          </a>
+          </Link>
 
           <div ref={card4Ref} className='h-[45vh] md:h-full relative w-full md:w-[35%] bg-[#B7E0FF] rounded-3xl md:rounded-[3rem] group overflow-hidden'>
           <div className='right-6 md:right-10 top-6 md:top-10 absolute flex flex-col text-right gap-1'>

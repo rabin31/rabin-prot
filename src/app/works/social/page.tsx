@@ -4,7 +4,7 @@ import Navbar from '@/components/Navbar'
 import React, { useEffect, useRef } from 'react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import Image from 'next/image' // Import Next.js Image component
+import Image from 'next/image'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -12,6 +12,7 @@ const Page = () => {
   const titleRef = useRef(null)
   const descRef = useRef(null)
   const logoRefs = useRef<(HTMLDivElement | null)[]>([])
+  const [zoomedImage, setZoomedImage] = React.useState<string | null>(null)
 
   const logos = [
     {
@@ -85,10 +86,18 @@ const Page = () => {
       }
     })
 
+    // Prevent body scroll when zoomed
+    if (zoomedImage) {
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = 'unset'
+    }
+
     return () => {
       ScrollTrigger.getAll().forEach(trigger => trigger.kill())
+      document.body.style.overflow = 'unset'
     }
-  }, [])
+  }, [zoomedImage])
 
   return (
     <div className='relative w-full min-h-screen bg-[#E8F5E3]'>
@@ -117,13 +126,27 @@ const Page = () => {
               className=''
             >
               <div className='px-2 sm:px-4'>
-                <div className='logo-img h-[50vh] sm:h-[60vh] md:h-[80vh] lg:h-screen w-full rounded-2xl overflow-hidden'>
+                <div 
+                  className='logo-img w-full rounded-2xl overflow-hidden cursor-pointer md:cursor-default'
+                  onClick={() => setZoomedImage(logo.img)}
+                >
                   <Image 
                     src={logo.img} 
                     alt={logo.title} 
                     width={1200} 
                     height={800}
-                    className='object-cover h-full w-full'
+                    className='w-full h-auto'
+                    priority={index === 0}
+                    loading={index === 0 ? 'eager' : 'lazy'}
+                    placeholder='blur'
+                    blurDataURL='data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=='
+                    sizes='
+                      (max-width: 640px) 100vw,
+                      (max-width: 768px) 95vw,
+                      (max-width: 1024px) 90vw,
+                      (max-width: 1280px) 85vw,
+                      1200px
+                    '
                   />
                 </div>
               </div>
@@ -131,6 +154,33 @@ const Page = () => {
           ))}
         </div>
       </div>
+
+      {/* Zoom Modal */}
+      {zoomedImage && (
+        <div 
+          className='fixed inset-0 z-50 bg-black bg-opacity-90 flex items-center justify-center p-4'
+          onClick={() => setZoomedImage(null)}
+        >
+          <div className='relative w-full h-full flex items-center justify-center'>
+            <button 
+              className='absolute top-4 right-4 text-white text-4xl font-light hover:text-gray-300 transition-colors z-10'
+              onClick={() => setZoomedImage(null)}
+            >
+              ×
+            </button>
+            <div className='relative w-full h-full flex items-center justify-center'>
+              <Image 
+                src={zoomedImage} 
+                alt='Zoomed image' 
+                width={1200} 
+                height={800}
+                className='max-w-full max-h-full object-contain'
+                priority
+              />
+            </div>
+          </div>
+        </div>
+      )}
 
       <Footer />
     </div>

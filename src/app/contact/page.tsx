@@ -122,7 +122,7 @@ const ContactPage = () => {
 
       if (response.ok) {
         setSubmitStatus('success')
-        setSubmitMessage(`Thank you, ${formData.name}! I&apos;ve received your message and will get back to you soon.`)
+        setSubmitMessage(`Thank you, ${formData.name}! I've received your message and will get back to you soon.`)
         setFormData({
           name: '',
           email: '',
@@ -199,13 +199,13 @@ const ContactPage = () => {
             </h1>
           </div>
 
-          {/* Contact Section */}
-          <div className='flex flex-col lg:flex-row items-start justify-between max-w-6xl mx-auto px-4 sm:px-6 lg:px-12 gap-8 sm:gap-12 lg:gap-16'>
+          {/* Contact Section - Centered on mobile */}
+          <div className='flex flex-col lg:flex-row items-center lg:items-start justify-center lg:justify-between max-w-6xl mx-auto px-4 sm:px-6 lg:px-12 gap-8 sm:gap-12 lg:gap-16'>
             
-            {/* Left Content */}
+            {/* Left Content - Centered on mobile */}
             <div 
               ref={leftContentRef}
-              className='w-full lg:w-2/5 space-y-6 sm:space-y-8'
+              className='w-full lg:w-2/5 space-y-6 sm:space-y-8 text-center lg:text-left'
             >
               <div>
                 <h2 className='font-acorn font-semibold text-[#025A4E] text-3xl sm:text-4xl mb-4 sm:mb-6'>
@@ -226,7 +226,7 @@ const ContactPage = () => {
                 
                 <div>
                   <h3 className='font-acorn font-semibold text-[#025A4E] text-lg sm:text-xl mb-3'>Connect</h3>
-                  <div className='flex flex-wrap gap-3 sm:gap-4'>
+                  <div className='flex flex-wrap justify-center lg:justify-start gap-3 sm:gap-4'>
                     <a href="#" className='font-matter text-base sm:text-lg text-[#4C6763] hover:text-[#025A4E] transition-colors'>Dribbble</a>
                     <a href="#" className='font-matter text-base sm:text-lg text-[#4C6763] hover:text-[#025A4E] transition-colors'>LinkedIn</a>
                     <a href="#" className='font-matter text-base sm:text-lg text-[#4C6763] hover:text-[#025A4E] transition-colors'>Instagram</a>
@@ -235,10 +235,10 @@ const ContactPage = () => {
               </div>
             </div>
 
-            {/* Right Content - Form */}
+            {/* Right Content - Form - Centered on mobile */}
             <div 
               ref={formRef}
-              className='w-full lg:w-3/5'
+              className='w-full lg:w-3/5 max-w-2xl'
             >
               <form onSubmit={handleSubmit} className='bg-white/60 backdrop-blur-sm rounded-2xl sm:rounded-3xl p-6 sm:p-8 shadow-sm'>
                 <div className='space-y-5 sm:space-y-6'>
