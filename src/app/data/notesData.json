@@ -1,0 +1,61 @@
+{
+  "notes": [
+    {
+      "id": 1,
+      "title": "Creating an Eye-Catching Preloader with GSAP",
+      "description": "Learn how to build a stunning preloader animation using GSAP that captures user attention from the first moment.",
+      "content": {
+        "intro": "Preloaders are no longer just loading indicators - they're an opportunity to create memorable first impressions and set the tone for your user experience. In this note, I'll break down how to create a captivating preloader using GSAP animations.",
+        "sections": [
+          {
+            "title": "The Power of First Impressions",
+            "content": "A well-designed preloader does more than just indicate loading - it builds anticipation, showcases your brand's personality, and keeps users engaged during those crucial first seconds.",
+            "bullets": [
+              "Reduces perceived loading time through engaging animations",
+              "Sets the visual tone for your entire application",
+              "Provides immediate feedback that something is happening"
+            ]
+          },
+          {
+            "title": "GSAP Timeline Magic",
+            "content": "The secret to smooth, coordinated animations lies in GSAP's timeline functionality. Let me walk through the key animation sequence:",
+            "codeExample": "const tl = gsap.timeline();\n\ntl.to('body', {\n  overflow: 'hidden',\n})\n  .to('.preloader .text-container', {\n    duration: 0,\n    opacity: 1,\n    ease: 'power3.out',\n  })\n  .from('.preloader .text-container h1', {\n    duration: 1.5,\n    delay: 0.2,\n    y: 200,\n    skewY: 10,\n    stagger: 0.4,\n    ease: 'power3.out',\n  })\n  .to('.preloader .text-container h1', {\n    duration: 1.2,\n    y: 200,\n    skewY: -20,\n    stagger: 0.2,\n    ease: 'power3.out',\n  })\n  .to('.preloader', {\n    duration: 1,\n    height: '0vh',\n    ease: 'power3.out',\n  })\n  .to('body', {\n    overflow: 'auto',\n  }, '-=1')\n  .set('.preloader', { display: 'none' });"
+          },
+          {
+            "title": "Animation Breakdown",
+            "content": "Each step in the timeline serves a specific purpose in creating a fluid, professional loading experience:",
+            "principles": [
+              "Start by locking body scroll to prevent awkward jumps",
+              "Reveal text with dramatic entrance animations (slide + skew)",
+              "Use stagger effects for sequential element animations",
+              "Exit with a smooth collapse animation",
+              "Always restore scroll and clean up DOM when complete"
+            ]
+          },
+          {
+            "title": "CSS Styling Considerations",
+            "content": "The CSS plays a crucial role in making the animations work seamlessly. Key styling decisions include:",
+            "codeExample": ".preloader {\n  position: fixed;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  background-color: #0c0a0b;\n  overflow: hidden;\n  z-index: 100;\n}\n\n.text-container {\n  display: flex;\n  flex-direction: row;\n  gap: 1em;\n  overflow: hidden;\n  color: white;\n  opacity: 0;\n}\n\n.big-text {\n  font-family: 'Bebas Neue', sans-serif;\n  font-size: 5rem;\n}"
+          },
+          {
+            "title": "Performance Optimization",
+            "content": "Even with complex animations, performance should never be compromised. Here are key optimization strategies:",
+            "bullets": [
+              "Use CSS transforms (like translateY) instead of layout-changing properties",
+              "Leverage GSAP's built-in performance optimizations",
+              "Keep animation durations reasonable (1-2 seconds max per major phase)",
+              "Use will-change CSS property for animated elements",
+              "Always clean up event listeners and GSAP instances"
+            ]
+          }
+        ],
+        "conclusion": "A great preloader is more than just decoration - it's the opening act of your user experience. By combining GSAP's powerful animation capabilities with thoughtful design principles, you can transform loading time into an engaging brand moment that users will remember."
+      },
+      "iconBg": "bg-purple-700",
+      "iconType": "spark",
+      "author": "Imposter Rave",
+      "publishedDate": "2 Days ago",
+      "image": "/notes/preloader.png"
+    }
+  ]
+}
