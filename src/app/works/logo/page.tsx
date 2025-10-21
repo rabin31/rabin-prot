@@ -4,6 +4,7 @@ import Navbar from '@/components/Navbar'
 import React, { useEffect, useRef } from 'react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import Image from 'next/image' // Import Next.js Image component
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -25,7 +26,7 @@ const Page = () => {
       img: '/logo/logo1.png',
       title: 'Pixalare Agency',
       description:
-        'Logo design for Pixalare Agency — a creative design and branding agency based in Nepal. The mark symbolizes digital creativity, collaboration, and innovative design thinking, representing the agency’s modern and bold identity.'
+        'Logo design for Pixalare Agency — a creative design and branding agency based in Nepal. The mark symbolizes digital creativity, collaboration, and innovative design thinking, representing the agency&apos;s modern and bold identity.'
     },
     {
       id: 3,
@@ -39,7 +40,7 @@ const Page = () => {
       img: '/logo/logo3.png',
       title: 'Paila Treks',
       description:
-        'A logo design representing trekking and exploration in Nepal. Inspired by mountain silhouettes and natural colors, it captures the adventurous spirit and authenticity of Nepal’s travel and trekking experiences.'
+        'A logo design representing trekking and exploration in Nepal. Inspired by mountain silhouettes and natural colors, it captures the adventurous spirit and authenticity of Nepal&apos;s travel and trekking experiences.'
     },
     {
       id: 5,
@@ -154,7 +155,13 @@ const Page = () => {
             >
               <div className='px-2 sm:px-4'>
                 <div className='logo-img h-[50vh] sm:h-[60vh] md:h-[80vh] lg:h-screen w-full rounded-2xl overflow-hidden'>
-                  <img src={logo.img} alt={logo.title} className='object-cover h-full w-full' />
+                  <Image 
+                    src={logo.img} 
+                    alt={logo.title} 
+                    width={1200} 
+                    height={800}
+                    className='object-cover h-full w-full'
+                  />
                 </div>
               </div>
 

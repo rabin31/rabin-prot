@@ -2,6 +2,7 @@
 import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import Image from 'next/image'; // Import Next.js Image component
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -216,7 +217,7 @@ const AboutMe = () => {
         role="heading"
         aria-level={1}
       >
-        I'm Rabin.
+        I&apos;m Rabin.
       </h1>
 
       {/* Introduction Section */}
@@ -227,9 +228,11 @@ const AboutMe = () => {
           aria-label="Profile image"
         >
           <div className='h-full w-full rounded-tl-[6rem] rounded-tr-[6rem] sm:rounded-tl-[8rem] sm:rounded-tr-[8rem] md:rounded-tl-full md:rounded-tr-full overflow-hidden shadow-xl md:shadow-2xl hover:shadow-3xl transition-shadow duration-500 group'>
-            <img 
-              src="./rabin.jpg" 
+            <Image 
+              src="/rabin.jpg" 
               alt="Rabin Thapa, Developer and Designer from Nepal" 
+              width={600}
+              height={800}
               className='object-cover h-full w-full group-hover:scale-110 transition-transform duration-700 ease-out'
               loading="eager"
             />
@@ -238,11 +241,11 @@ const AboutMe = () => {
 
         <div ref={textRef} className='h-full w-full md:w-[60%] py-4 sm:py-6 md:py-16 lg:py-22 px-4 sm:px-6 md:px-8 lg:pr-24 xl:pr-38'>
           <h2 className='font-acorn font-semibold text-[#025A4E] text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl leading-snug md:leading-relaxed lg:leading-14'>
-            I'm a Developer & Designer from Nepal.
+            I&apos;m a Developer & Designer from Nepal.
           </h2>
           <p className='font-matter font-medium text-sm sm:text-base md:text-lg text-[#4C6763] mt-3 sm:mt-4 md:mt-6 leading-relaxed'>
-            Over the past 3 years, I've worked in various areas of digital design, including graphic design, WordPress development, and app UI/UX. I'm proud to have worn many hats. <br/><br/>
-            These days, I focus on mastering the MERN stack and creating animated web experiences using GSAP, while pursuing my BCA degree at Tribhuvan University. I'm also learning Java and constantly exploring new design trends to stay current in the ever-evolving tech landscape.
+            Over the past 3 years, I&apos;ve worked in various areas of digital design, including graphic design, WordPress development, and app UI/UX. I&apos;m proud to have worn many hats. <br/><br/>
+            These days, I focus on mastering the MERN stack and creating animated web experiences using GSAP, while pursuing my BCA degree at Tribhuvan University. I&apos;m also learning Java and constantly exploring new design trends to stay current in the ever-evolving tech landscape.
           </p>
         </div>
       </section>
@@ -268,10 +271,10 @@ const AboutMe = () => {
       <section ref={collaborateRef} className='min-h-[50vh] sm:min-h-[55vh] md:min-h-[60vh] px-4 sm:px-6 md:px-12 lg:px-24 xl:pl-92 md:pr-12 py-6 sm:py-8 md:py-12 lg:py-0 flex items-center'>
         <div className='w-full'>
           <h2 className='font-acorn font-semibold text-[#025A4E] text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl leading-snug md:leading-relaxed lg:leading-14'>
-            Let's collaborate on creative and innovative projects.
+            Let&apos;s collaborate on creative and innovative projects.
           </h2>
           <p className='font-matter font-medium text-sm sm:text-base md:text-lg text-[#4C6763] mt-3 sm:mt-4 max-w-full md:max-w-lg lg:max-w-xl leading-relaxed md:leading-tight'>
-            I believe in the power of creativity and technology to solve problems and create meaningful digital experiences. Whether you need stunning designs, robust web applications, or animated interactive websites, I'd love to bring your vision to life.
+            I believe in the power of creativity and technology to solve problems and create meaningful digital experiences. Whether you need stunning designs, robust web applications, or animated interactive websites, I&apos;d love to bring your vision to life.
           </p>
         </div>
       </section>
@@ -309,10 +312,10 @@ const AboutMe = () => {
             Before I stepped into the world of development, I was a graphic designer. One of my earliest professional experiences involved creating visual content for publications, where I learned the importance of visual storytelling and brand consistency.
           </p>
           <p>
-            Designing for print and digital media forced me to understand how typography, color, and layout work together, skills I've carried and kept fresh in the years since. My side project work is just an excuse to satisfy my curiosity about new technologies and understand how the web is moving forward.
+            Designing for print and digital media forced me to understand how typography, color, and layout work together, skills I&apos;ve carried and kept fresh in the years since. My side project work is just an excuse to satisfy my curiosity about new technologies and understand how the web is moving forward.
           </p>
           <p>
-            Currently, I'm expanding my skills by learning Java and exploring emerging design trends to create more robust and innovative solutions. I enjoy working on personal projects that combine my love for creativity and code, and drawing inspiration from the rich culture and natural beauty of Nepal.
+            Currently, I&apos;m expanding my skills by learning Java and exploring emerging design trends to create more robust and innovative solutions. I enjoy working on personal projects that combine my love for creativity and code, and drawing inspiration from the rich culture and natural beauty of Nepal.
           </p>
         </div>
       </section>
@@ -324,9 +327,11 @@ const AboutMe = () => {
           className='h-[40vh] sm:h-[45vh] md:h-[60vh] lg:h-[85vh] relative w-full md:w-[60%] rounded-xl sm:rounded-2xl overflow-hidden shadow-lg md:shadow-xl group'
         >
           <div className='absolute inset-0 bg-gradient-to-br from-indigo-600/20 to-transparent z-10 group-hover:opacity-0 transition-opacity duration-500' aria-hidden="true"></div>
-          <img 
+          <Image 
             src="/rabin1.jpg" 
             alt="Rabin working on design projects" 
+            width={800}
+            height={600}
             className='object-cover h-full w-full'
             loading="lazy"
           />
@@ -339,9 +344,11 @@ const AboutMe = () => {
           className='h-[40vh] sm:h-[45vh] md:h-[60vh] lg:h-[85vh] relative w-full md:w-[30%] rounded-xl sm:rounded-2xl overflow-hidden shadow-lg md:shadow-xl group'
         >
           <div className='absolute inset-0 bg-gradient-to-br from-amber-400/20 to-transparent z-10 group-hover:opacity-0 transition-opacity duration-500' aria-hidden="true"></div>
-          <img 
+          <Image 
             src="/rabin2.jpg" 
             alt="Rabin in Nepal" 
+            width={400}
+            height={600}
             className='object-cover h-full w-full'
             loading="lazy"
           />

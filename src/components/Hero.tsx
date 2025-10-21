@@ -2,11 +2,12 @@
 import React, { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import Image from 'next/image'; // Import Next.js Image component
 
 gsap.registerPlugin(ScrollTrigger);
 
 const Hero = () => {
-  const [role, setRole] = useState('Developer.');
+  const [role] = useState('Developer.'); // Removed unused setRole
   const heroRef = useRef(null);
   const headingRef = useRef<HTMLHeadingElement>(null);
   const roleRef = useRef(null);
@@ -87,15 +88,11 @@ const Hero = () => {
     return () => ctx.revert();
   }, []);
 
-  useEffect(() => {
-    return () => {};
-  }, []);
-
   return (
     <div ref={heroRef} className="h-[90vh] w-full relative flex flex-col items-center justify-between py-8 md:py-16 px-4">
       <div className="flex-1 flex flex-col font-acorn items-center justify-center mt-8 md:mt-16">
         <h1 ref={headingRef} className="text-[#025A4E] text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-semibold text-center">
-          Hi. I'm Rabin.
+          Hi. I&apos;m Rabin.
         </h1>
         <h1 className="text-[#025A4E] text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-semibold text-center flex flex-wrap items-center justify-center gap-2 md:gap-4">
           <span className="sticky top-1/2">A</span>
@@ -104,15 +101,27 @@ const Hero = () => {
       </div>
 
       <p ref={descRef} className="text-center pt-4 md:pt-6 max-w-[90%] md:max-w-[56ch] text-[#698682] font-matter font-medium text-base md:text-lg px-4">
-        I'm passionate about crafting experiences that are engaging, accessible, and user-centric.
+        I&apos;m passionate about crafting experiences that are engaging, accessible, and user-centric.
       </p>
       
       <div ref={star1Ref} className='absolute z-44 h-12 w-12 sm:h-16 sm:w-16 md:h-20 md:w-20 bottom-20 left-4 sm:bottom-32 sm:left-20 md:bottom-40 md:left-60'>
-        <img src="./star.png" alt='Hero Circle' className='h-full w-full object-contain' />
+        <Image 
+          src="/star.png" 
+          alt='Hero Circle' 
+          width={80}
+          height={80}
+          className='h-full w-full object-contain'
+        />
       </div>
       
       <div ref={star2Ref} className='absolute z-44 h-12 w-12 sm:h-16 sm:w-16 md:h-20 md:w-20 top-20 right-4 sm:top-32 sm:right-20 md:top-40 md:right-60'>
-        <img src="./star.png" alt='Hero Circle' className='h-full w-full object-contain' />
+        <Image 
+          src="/star.png" 
+          alt='Hero Circle' 
+          width={80}
+          height={80}
+          className='h-full w-full object-contain'
+        />
       </div>
     </div>
   );

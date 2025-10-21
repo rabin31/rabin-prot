@@ -7,6 +7,15 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
 gsap.registerPlugin(ScrollTrigger)
 
+// Add interface for the event parameter
+interface MouseEvent {
+  target: {
+    classList: {
+      contains: (className: string) => boolean;
+    };
+  };
+}
+
 const Page = () => {
   const [activePreview, setActivePreview] = useState<number | null>(null)
   const titleRef = useRef(null)
@@ -61,7 +70,7 @@ const Page = () => {
       url: 'https://smc-omega.vercel.app/',
       title: 'SMC',
       description:
-        'Frontend design and development for SMC College’s official website with modern UI elements and responsive design.',
+        'Frontend design and development for SMC College&apos;s official website with modern UI elements and responsive design.',
     },
     {
       id: 8,
@@ -134,8 +143,12 @@ const Page = () => {
   }, [])
 
   const handlePreviewClick = (id: number) => setActivePreview(id)
-  const handleClickOutside = (e: any) => {
-    if (e.target.classList.contains('preview-overlay')) setActivePreview(null)
+  
+  // Fixed: Replaced 'any' with proper React MouseEvent type
+  const handleClickOutside = (e: React.MouseEvent<HTMLDivElement>) => {
+    if ((e.target as HTMLDivElement).classList.contains('preview-overlay')) {
+      setActivePreview(null)
+    }
   }
 
   return (
@@ -155,7 +168,7 @@ const Page = () => {
           ref={descRef}
           className="text-[#4C6763] text-base sm:text-lg font-matter font-medium text-center mt-4 px-4"
         >
-          A showcase of websites I’ve designed and developed web applications.
+          A showcase of websites I&apos;ve designed and developed web applications.
         </p>
 
         <div className="mt-12 sm:mt-14 md:mt-16 lg:mt-20 space-y-12 sm:space-y-16 md:space-y-20">

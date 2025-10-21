@@ -122,7 +122,7 @@ const ContactPage = () => {
 
       if (response.ok) {
         setSubmitStatus('success')
-        setSubmitMessage(`Thank you, ${formData.name}! I've received your message and will get back to you soon.`)
+        setSubmitMessage(`Thank you, ${formData.name}! I&apos;ve received your message and will get back to you soon.`)
         setFormData({
           name: '',
           email: '',
@@ -209,10 +209,10 @@ const ContactPage = () => {
             >
               <div>
                 <h2 className='font-acorn font-semibold text-[#025A4E] text-3xl sm:text-4xl mb-4 sm:mb-6'>
-                  Let's work together
+                  Let&apos;s work together
                 </h2>
                 <p className='font-matter text-base sm:text-lg text-[#4C6763] leading-relaxed'>
-                  Have a project in mind? I'd love to hear about it and explore how we can create something amazing together.
+                  Have a project in mind? I&apos;d love to hear about it and explore how we can create something amazing together.
                 </p>
               </div>
 

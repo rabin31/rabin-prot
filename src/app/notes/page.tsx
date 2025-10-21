@@ -5,6 +5,7 @@ import React, { useState, useEffect, useRef } from 'react'
 import notesData from '@/app/data/notesData.json'
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import Image from 'next/image'; // Import Next.js Image component
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -291,7 +292,13 @@ const NotesPage = () => {
                   
                   <div className='flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-4 my-6 sm:my-8'>
                     <div className='h-10 w-10 sm:h-12 sm:w-12 border-[#025A4E] border-2 rounded-full overflow-hidden'>
-                      <img src="/rabin.jpg" alt="" className='object-cover h-full w-full' />
+                      <Image 
+                        src="/rabin.jpg" 
+                        alt="Rabin Thapa" 
+                        width={48}
+                        height={48}
+                        className='object-cover h-full w-full'
+                      />
                     </div>
                     <div className='flex flex-col sm:flex-row items-center gap-2 text-center'>
                       <p className='text-base sm:text-lg font-semibold text-[#025A4E] font-matter'>{selectedNote.author}</p>
@@ -304,7 +311,13 @@ const NotesPage = () => {
                 {/* Featured Image */}
                 <div className='flex items-center justify-center'>
                   <div className='h-[40vh] w-full sm:h-[50vh] sm:w-[80vw] md:h-[60vh] md:w-[70vw] lg:w-[60vw] rounded-xl sm:rounded-2xl overflow-hidden'>
-                    <img src={selectedNote.image} alt={selectedNote.title} className='object-cover w-full h-full' />
+                    <Image 
+                      src={selectedNote.image} 
+                      alt={selectedNote.title} 
+                      width={800}
+                      height={600}
+                      className='object-cover w-full h-full'
+                    />
                   </div>
                 </div>
 
@@ -455,7 +468,7 @@ const NotesPage = () => {
 
         {/* Notes Grid */}
         <div className='mt-12 sm:mt-16 space-y-4 sm:space-y-6 max-w-6xl mx-auto px-0 sm:px-4 md:px-38'>
-          {notesData.notes.map((note: any, index) => (
+          {notesData.notes.map((note: Note, index) => ( // Fixed: Changed 'any' to 'Note' type
             <div 
               key={note.id}
               ref={(el) => { notesRef.current[index] = el; }}
