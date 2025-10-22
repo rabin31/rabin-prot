@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import { Analytics } from "@vercel/analytics/next"
-import SmokeyCursor from "@/components/ui/smokey-cursor";
 
 // Acorn font family
 const acorn = localFont({
@@ -133,13 +132,6 @@ export default function RootLayout({
       >
         <Analytics/>
         {children}
-        <SmokeyCursor
-  simulationResolution={64}
-  dyeResolution={512}
-  densityDissipation={5}
-  velocityDissipation={3}
-  enableShading={false}
-/>
       </body>
     </html>
   );
