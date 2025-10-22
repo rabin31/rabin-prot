@@ -9,51 +9,49 @@ interface PreloaderProps {
 
 const Preloader: React.FC<PreloaderProps> = ({ onComplete }) => {
   useEffect(() => {
-    const tl = gsap.timeline({
+    document.body.style.overflow = 'hidden';
+
+    const tl = gsap.timeline();
+
+    // Make text visible immediately
+    gsap.set('.text-container', { opacity: 1 });
+
+    // Animate text in
+    tl.fromTo('.big-text', 
+      { y: 200, opacity: 0, skewY: 10 },
+      { 
+        y: 0, 
+        opacity: 1, 
+        skewY: 0, 
+        duration: 1.5, 
+        stagger: 0.3, 
+        ease: 'power3.out' 
+      }
+    )
+    // Animate text out
+    .to('.big-text', {
+      y: -200,
+      opacity: 0,
+      skewY: -10,
+      duration: 1,
+      stagger: 0.2,
+      ease: 'power3.inOut'
+    })
+    // Hide preloader
+    .to('.preloader', {
+      height: 0,
+      duration: 0.8,
+      ease: 'power3.inOut',
       onComplete: () => {
+        document.body.style.overflow = 'unset';
         onComplete();
       }
     });
 
-    tl.to('body', {
-      overflow: 'hidden',
-    })
-      .to(
-        '.preloader .text-container',
-        {
-          duration: 0,
-          opacity: 1,
-          ease: 'power3.out',
-        }
-      )
-      .from('.preloader .text-container h1', {
-        duration: 1.5,
-        delay: 0.2,
-        y: 200,
-        skewY: 10,
-        stagger: 0.4,
-        ease: 'power3.out',
-      })
-      .to('.preloader .text-container h1', {
-        duration: 1.2,
-        y: 200,
-        skewY: -20,
-        stagger: 0.2,
-        ease: 'power3.out',
-      })
-      .to('.preloader', {
-        duration: 1,
-        height: '0vh',
-        ease: 'power3.out',
-      })
-      .to(
-        'body',
-        {
-          overflow: 'auto',
-        },
-        '-=1'
-      )
-      .set('.preloader', { display: 'none' });
+    return () => {
+      document.body.style.overflow = 'unset';
+      tl.kill();
+    };
   }, [onComplete]);
 
   return (

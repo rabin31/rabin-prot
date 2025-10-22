@@ -220,7 +220,7 @@ const ContactPage = () => {
                 <div>
                   <h3 className='font-acorn font-semibold text-[#025A4E] text-lg sm:text-xl mb-2'>Email</h3>
                   <a href="mailto:hello@rabin.design" className='font-matter text-base sm:text-lg text-[#4C6763] hover:text-[#025A4E] transition-colors break-all'>
-                    hello@rabin.design
+                    raveenthpa@gmail.com
                   </a>
                 </div>
                 

@@ -1,9 +1,6 @@
-
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 import localFont from "next/font/local";
 import "./globals.css";
-import ClientWrapper from '@/components/ClientWrapper';
 
 // Acorn font family
 const acorn = localFont({
@@ -132,9 +129,7 @@ export default function RootLayout({
       <body
         className={`${acorn.variable} ${matter.variable} antialiased`}
       >
-        <ClientWrapper>
-          {children}
-        </ClientWrapper>
+        {children}
       </body>
     </html>
   );

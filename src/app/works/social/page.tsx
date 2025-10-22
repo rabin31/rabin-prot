@@ -119,39 +119,40 @@ const Page = () => {
         </p>
 
         <div className='mt-12 sm:mt-14 md:mt-16'>
-          {logos.map((logo, index) => (
-            <div 
-              key={logo.id} 
-              ref={el => { logoRefs.current[index] = el }}
-              className=''
-            >
-              <div className='px-2 sm:px-4'>
-                <div 
-                  className='logo-img w-full rounded-2xl overflow-hidden cursor-pointer md:cursor-default'
-                  onClick={() => setZoomedImage(logo.img)}
-                >
-                  <Image 
-                    src={logo.img} 
-                    alt={logo.title} 
-                    width={1200} 
-                    height={800}
-                    className='w-full h-auto'
-                    priority={index === 0}
-                    loading={index === 0 ? 'eager' : 'lazy'}
-                    placeholder='blur'
-                    blurDataURL='data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=='
-                    sizes='
-                      (max-width: 640px) 100vw,
-                      (max-width: 768px) 95vw,
-                      (max-width: 1024px) 90vw,
-                      (max-width: 1280px) 85vw,
-                      1200px
-                    '
-                  />
+          <div className='grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8'>
+            {logos.map((logo, index) => (
+              <div 
+                key={logo.id} 
+                ref={el => { logoRefs.current[index] = el }}
+                className='flex justify-center'
+              >
+                <div className='px-2 sm:px-4 w-full max-w-lg'>
+                  <div 
+                    className='logo-img w-full rounded-2xl overflow-hidden cursor-pointer md:cursor-default'
+                    onClick={() => setZoomedImage(logo.img)}
+                  >
+                    <Image 
+                      src={logo.img} 
+                      alt={logo.title} 
+                      width={1200} 
+                      height={800}
+                      className='w-full h-auto'
+                      priority={index === 0}
+                      loading={index === 0 ? 'eager' : 'lazy'}
+                      placeholder='blur'
+                      blurDataURL='data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=='
+                      sizes='
+                        (max-width: 768px) 100vw,
+                        (max-width: 1024px) 45vw,
+                        (max-width: 1280px) 40vw,
+                        500px
+                      '
+                    />
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
 
