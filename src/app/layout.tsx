@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
+import { Analytics } from "@vercel/analytics/next"
 
 // Acorn font family
 const acorn = localFont({
@@ -129,6 +130,7 @@ export default function RootLayout({
       <body
         className={`${acorn.variable} ${matter.variable} antialiased`}
       >
+        <Analytics/>
         {children}
       </body>
     </html>
