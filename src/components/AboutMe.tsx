@@ -2,7 +2,7 @@
 import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import Image from 'next/image'; // Import Next.js Image component
+import Image from 'next/image';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -222,22 +222,27 @@ const AboutMe = () => {
 
       {/* Introduction Section */}
       <section className='min-h-[70vh] sm:min-h-[80vh] md:min-h-[90vh] flex flex-col md:flex-row items-center justify-center gap-6 sm:gap-8 md:gap-0 py-6 sm:py-8 md:py-0'>
-      <div 
-  ref={imageRef} 
-  className='h-[0vh] sm:h-[65vh] md:h-[80vh] lg:h-[95vh] w-full md:w-[40%] px-6 sm:px-8 md:px-12 lg:px-16 xl:px-28 md:pt-16 lg:pt-22 md:pb-32 lg:pb-42'
-  aria-label="Profile image"
->
-  <div className='h-full w-full rounded-tl-[6rem] rounded-tr-[6rem] sm:rounded-tl-[8rem] sm:rounded-tr-[8rem] md:rounded-tl-full md:rounded-tr-full overflow-hidden shadow-xl md:shadow-2xl hover:shadow-3xl transition-shadow'>
-    <Image 
-      src="/rabin4.jpg" 
-      alt="Rabin Thapa, Developer and Designer from Nepal" 
-      width={600}
-      height={800}
-      className='object-cover h-full w-full group-hover:scale-110 transition-transform duration-700 ease-out'
-      loading="eager"
-    />
-  </div>
-</div>
+        {/* Profile Image - Fixed for mobile */}
+        <div 
+          ref={imageRef} 
+          className='h-[50vh] sm:h-[60vh] md:h-[80vh] lg:h-[95vh] w-full md:w-[40%] px-4 sm:px-6 md:px-12 lg:px-16 xl:px-28 md:pt-16 lg:pt-22 md:pb-32 lg:pb-42'
+          aria-label="Profile image"
+        >
+          <div className='h-full w-full rounded-tl-[3rem] rounded-tr-[3rem] sm:rounded-tl-[6rem] sm:rounded-tr-[6rem] md:rounded-tl-[8rem] md:rounded-tr-[8rem] lg:rounded-tl-full lg:rounded-tr-full overflow-hidden shadow-lg sm:shadow-xl md:shadow-2xl hover:shadow-3xl transition-shadow duration-300'>
+            <Image 
+              src="/rabin4.png" 
+              alt="Rabin Thapa, Developer and Designer from Nepal" 
+              width={600}
+              height={800}
+              className='object-cover h-full w-full hover:scale-105 transition-transform duration-700 ease-out'
+              loading="eager"
+              priority
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 40vw"
+            />
+          </div>
+        </div>
+
+        {/* Text Content */}
         <div ref={textRef} className='h-full w-full md:w-[60%] py-4 sm:py-6 md:py-16 lg:py-22 px-4 sm:px-6 md:px-8 lg:pr-24 xl:pr-38'>
           <h2 className='font-acorn font-semibold text-[#025A4E] text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl leading-snug md:leading-relaxed lg:leading-14'>
             I&apos;m a Developer & Designer from Nepal.
@@ -319,43 +324,48 @@ const AboutMe = () => {
         </div>
       </section>
 
-      {/* Photo Gallery */}
-        <section className='h-auto md:h-[70vh] lg:h-[85vh] w-full flex flex-col md:flex-row items-center justify-center gap-6 sm:gap-8 md:gap-12 lg:gap-16 mt-6 sm:mt-8 px-4 sm:px-6 md:px-8 lg:px-0' aria-label="Photo gallery">
-          <figure 
-            ref={img1Ref} 
-            className='h-[40vh] sm:h-[45vh] md:h-[60vh] lg:h-[85vh] relative w-full md:w-[60%] rounded-xl sm:rounded-2xl overflow-hidden shadow-lg md:shadow-xl group'
-          >
-            <div className='absolute inset-0 bg-gradient-to-br from-indigo-600/20 to-transparent z-10 group-hover:opacity-0 transition-opacity duration-500' aria-hidden="true"></div>
-            <Image 
-              src="/rabin1.jpg" 
-              alt="Rabin working on design projects" 
-              width={800}
-              height={600}
-              className='object-cover h-full w-full'
-              loading="lazy"
-            />
-            <div className='absolute bottom-4 left-4 bg-white/90 backdrop-blur-sm px-4 py-2 rounded-lg md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300 z-20'>
-              <p className='text-[#025A4E] font-matter font-semibold text-sm sm:text-base'>Asian Hackathon 2025</p>
-            </div>
-          </figure>
-          <figure 
-            ref={img2Ref} 
-            className='h-[40vh] sm:h-[45vh] md:h-[60vh] lg:h-[85vh] relative w-full md:w-[30%] rounded-xl sm:rounded-2xl overflow-hidden shadow-lg md:shadow-xl group'
-          >
-            <div className='absolute inset-0 bg-gradient-to-br from-amber-400/20 to-transparent z-10 group-hover:opacity-0 transition-opacity duration-500' aria-hidden="true"></div>
-            <Image 
-              src="/rabin2.jpg" 
-              alt="Rabin in Nepal" 
-              width={400}
-              height={600}
-              className='object-cover h-full w-full'
-              loading="lazy"
-            />
-            <div className='absolute bottom-4 left-4 bg-white/90 backdrop-blur-sm px-4 py-2 rounded-lg md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300 z-20'>
-              <p className='text-[#025A4E] font-matter font-semibold text-sm sm:text-base'>Dashain</p>
-            </div>
-          </figure>
-        </section>
+      {/* Photo Gallery - Fixed for mobile */}
+      <section className='h-auto w-full flex flex-col md:flex-row items-center justify-center gap-4 sm:gap-6 md:gap-8 lg:gap-12 mt-6 sm:mt-8 md:mt-12 px-4 sm:px-6 md:px-8 lg:px-12' aria-label="Photo gallery">
+        {/* First Image - Wider on desktop, full width on mobile */}
+        <figure 
+          ref={img1Ref} 
+          className='h-[45vh] sm:h-[50vh] md:h-[60vh] lg:h-[75vh] xl:h-[85vh] relative w-full md:w-[65%] lg:w-[60%] rounded-xl sm:rounded-2xl md:rounded-3xl overflow-hidden shadow-lg md:shadow-xl group'
+        >
+          <div className='absolute inset-0 bg-gradient-to-br from-indigo-600/20 to-transparent z-10 group-hover:opacity-0 transition-opacity duration-500' aria-hidden="true"></div>
+          <Image 
+            src="/rabin1.jpg" 
+            alt="Rabin working on design projects at Asian Hackathon 2025" 
+            width={800}
+            height={600}
+            className='object-cover h-full w-full hover:scale-105 transition-transform duration-700 ease-out'
+            loading="lazy"
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 65vw, 60vw"
+          />
+          <div className='absolute bottom-3 left-3 sm:bottom-4 sm:left-4 bg-white/90 backdrop-blur-sm px-3 py-1 sm:px-4 sm:py-2 rounded-lg opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300 z-20'>
+            <p className='text-[#025A4E] font-matter font-semibold text-xs sm:text-sm md:text-base'>Asian Hackathon 2025</p>
+          </div>
+        </figure>
+
+        {/* Second Image - Narrower on desktop, full width on mobile */}
+        <figure 
+          ref={img2Ref} 
+          className='h-[45vh] sm:h-[50vh] md:h-[60vh] lg:h-[75vh] xl:h-[85vh] relative w-full md:w-[35%] lg:w-[30%] rounded-xl sm:rounded-2xl md:rounded-3xl overflow-hidden shadow-lg md:shadow-xl group mt-4 md:mt-0'
+        >
+          <div className='absolute inset-0 bg-gradient-to-br from-amber-400/20 to-transparent z-10 group-hover:opacity-0 transition-opacity duration-500' aria-hidden="true"></div>
+          <Image 
+            src="/rabin2.jpg" 
+            alt="Rabin celebrating Dashain festival in Nepal" 
+            width={400}
+            height={600}
+            className='object-cover h-full w-full hover:scale-105 transition-transform duration-700 ease-out'
+            loading="lazy"
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 35vw, 30vw"
+          />
+          <div className='absolute bottom-3 left-3 sm:bottom-4 sm:left-4 bg-white/90 backdrop-blur-sm px-3 py-1 sm:px-4 sm:py-2 rounded-lg opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300 z-20'>
+            <p className='text-[#025A4E] font-matter font-semibold text-xs sm:text-sm md:text-base'>Dashain Festival</p>
+          </div>
+        </figure>
+      </section>
     </div>
   )
 }

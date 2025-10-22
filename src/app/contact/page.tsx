@@ -154,18 +154,18 @@ const ContactPage = () => {
   }
 
   return (
-    <div className='relative w-full min-h-screen'>
+    <div className='relative w-full min-h-screen overflow-x-hidden'>
       <div className='absolute top-0 left-0 w-full z-20'>
         <Navbar/>
       </div>
       
-      <div className='pt-20 sm:pt-24'>
+      <div className='pt-20 sm:pt-24 w-full'>
         <div className='relative w-full py-12 sm:py-16 md:py-22'>
           {/* Submission Message */}
           {submitStatus !== 'idle' && (
             <div 
               ref={messageRef}
-              className={`fixed top-20 left-1/2 transform -translate-x-1/2 z-50 max-w-md w-full mx-4 ${
+              className={`fixed top-20 left-1/2 transform -translate-x-1/2 z-50 max-w-md w-[calc(100%-2rem)] mx-4 ${
                 submitStatus === 'success' 
                   ? 'bg-[#025A4E] border-l-4 border-[#034139]' 
                   : 'bg-red-600 border-l-4 border-red-700'
@@ -190,7 +190,7 @@ const ContactPage = () => {
           )}
 
           {/* Simple Header */}
-          <div className='text-center mb-12 sm:mb-16 md:mb-20 px-4 sm:px-6'>
+          <div className='text-center mb-12 sm:mb-16 md:mb-20 px-4 sm:px-6 w-full'>
             <h1 
               ref={titleRef}
               className='font-acorn font-semibold text-[#025A4E] text-5xl sm:text-6xl md:text-7xl lg:text-8xl'
@@ -200,7 +200,7 @@ const ContactPage = () => {
           </div>
 
           {/* Contact Section - Centered on mobile */}
-          <div className='flex flex-col lg:flex-row items-center lg:items-start justify-center lg:justify-between max-w-6xl mx-auto px-4 sm:px-6 lg:px-12 gap-8 sm:gap-12 lg:gap-16'>
+          <div className='flex flex-col lg:flex-row items-center lg:items-start justify-center lg:justify-between max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 gap-8 sm:gap-12 lg:gap-16 w-full'>
             
             {/* Left Content - Centered on mobile */}
             <div 
@@ -275,10 +275,10 @@ const ContactPage = () => {
               ref={formRef}
               className='w-full lg:w-3/5 max-w-2xl'
             >
-              <form onSubmit={handleSubmit} className='bg-white/60 backdrop-blur-sm rounded-2xl sm:rounded-3xl p-6 sm:p-8 shadow-sm'>
+              <form onSubmit={handleSubmit} className='bg-white/60 backdrop-blur-sm rounded-2xl sm:rounded-3xl p-6 sm:p-8 shadow-sm w-full'>
                 <div className='space-y-5 sm:space-y-6'>
                   <div className='grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6'>
-                    <div>
+                    <div className='w-full'>
                       <label className='font-acorn font-semibold text-[#025A4E] text-base sm:text-lg mb-2 block'>Name</label>
                       <input
                         type="text"
@@ -292,7 +292,7 @@ const ContactPage = () => {
                       />
                     </div>
 
-                    <div>
+                    <div className='w-full'>
                       <label className='font-acorn font-semibold text-[#025A4E] text-base sm:text-lg mb-2 block'>Email</label>
                       <input
                         type="email"
@@ -307,7 +307,7 @@ const ContactPage = () => {
                     </div>
                   </div>
 
-                  <div>
+                  <div className='w-full'>
                     <label className='font-acorn font-semibold text-[#025A4E] text-base sm:text-lg mb-2 block'>Service</label>
                     <select
                       name="service"
@@ -325,7 +325,7 @@ const ContactPage = () => {
                     </select>
                   </div>
 
-                  <div>
+                  <div className='w-full'>
                     <label className='font-acorn font-semibold text-[#025A4E] text-base sm:text-lg mb-2 block'>Message</label>
                     <textarea
                       name="message"
