@@ -136,7 +136,7 @@ const Page = () => {
   )
 
   return (
-    <div className='relative w-full min-h-screen bg-[#E8F5E3]'>
+    <div className='relative w-full min-h-screen'>
       <div className='absolute top-0 left-0 w-full z-20'>
         <Navbar />
       </div>
@@ -204,7 +204,7 @@ const Page = () => {
                         <div className='absolute top-3 left-3'>
                           <span className={`text-xs font-medium px-2 py-1 rounded ${
                             video.category === 'design' 
-                              ? 'bg-purple-500 text-white' 
+                              ? 'bg-[#025A4E] text-white' 
                               : 'bg-blue-500 text-white'
                           }`}>
                             {video.category === 'design' ? 'Design' : 'Coding'}
@@ -214,7 +214,7 @@ const Page = () => {
 
                       {/* Content */}
                       <div className='p-5'>
-                        <h3 className='font-matter font-medium text-[#025A4E] text-base mb-3 line-clamp-2'>
+                        <h3 className='font-matter font-semibold text-[#025A4E] text-base mb-3 line-clamp-2'>
                           {video.title}
                         </h3>
                         
@@ -236,7 +236,7 @@ const Page = () => {
                               e.stopPropagation()
                               setSelectedVideo(video.embedUrl)
                             }}
-                            className='flex items-center gap-2 text-[#025A4E] hover:text-[#028C76] transition-colors hover:cursor-pointer text-sm'
+                            className='flex items-center gap-2 text-[#025A4E] hover:text-[#028C76] transition-colors hover:cursor-pointer font-semibold text-sm'
                           >
                             <svg className='w-4 h-4' fill='currentColor' viewBox='0 0 24 24'>
                               <path d='M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z'/>

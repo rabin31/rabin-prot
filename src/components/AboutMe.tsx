@@ -222,23 +222,22 @@ const AboutMe = () => {
 
       {/* Introduction Section */}
       <section className='min-h-[70vh] sm:min-h-[80vh] md:min-h-[90vh] flex flex-col md:flex-row items-center justify-center gap-6 sm:gap-8 md:gap-0 py-6 sm:py-8 md:py-0'>
-        <div 
-          ref={imageRef} 
-          className='h-[50vh] sm:h-[55vh] md:h-[70vh] lg:h-[85vh] w-full md:w-[40%] px-6 sm:px-8 md:px-12 lg:px-16 xl:px-28 md:pt-16 lg:pt-22 md:pb-32 lg:pb-42'
-          aria-label="Profile image"
-        >
-          <div className='h-full w-full rounded-tl-[6rem] rounded-tr-[6rem] sm:rounded-tl-[8rem] sm:rounded-tr-[8rem] md:rounded-tl-full md:rounded-tr-full overflow-hidden shadow-xl md:shadow-2xl hover:shadow-3xl transition-shadow'>
-            <Image 
-              src="/rabin4.jpg" 
-              alt="Rabin Thapa, Developer and Designer from Nepal" 
-              width={600}
-              height={800}
-              className='object-cover h-full w-full group-hover:scale-110 transition-transform duration-700 ease-out'
-              loading="eager"
-            />
-          </div>
-        </div>
-
+      <div 
+  ref={imageRef} 
+  className='h-[0vh] sm:h-[65vh] md:h-[80vh] lg:h-[95vh] w-full md:w-[40%] px-6 sm:px-8 md:px-12 lg:px-16 xl:px-28 md:pt-16 lg:pt-22 md:pb-32 lg:pb-42'
+  aria-label="Profile image"
+>
+  <div className='h-full w-full rounded-tl-[6rem] rounded-tr-[6rem] sm:rounded-tl-[8rem] sm:rounded-tr-[8rem] md:rounded-tl-full md:rounded-tr-full overflow-hidden shadow-xl md:shadow-2xl hover:shadow-3xl transition-shadow'>
+    <Image 
+      src="/rabin4.jpg" 
+      alt="Rabin Thapa, Developer and Designer from Nepal" 
+      width={600}
+      height={800}
+      className='object-cover h-full w-full group-hover:scale-110 transition-transform duration-700 ease-out'
+      loading="eager"
+    />
+  </div>
+</div>
         <div ref={textRef} className='h-full w-full md:w-[60%] py-4 sm:py-6 md:py-16 lg:py-22 px-4 sm:px-6 md:px-8 lg:pr-24 xl:pr-38'>
           <h2 className='font-acorn font-semibold text-[#025A4E] text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl leading-snug md:leading-relaxed lg:leading-14'>
             I&apos;m a Developer & Designer from Nepal.
